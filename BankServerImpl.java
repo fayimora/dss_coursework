@@ -3,36 +3,35 @@ import java.rmi.server.*;
 
 public class BankServerImpl extends UnicastRemoteObject implements BankServer
 {
+  int currentBalance;
+
   public static void main(String[] args)
   {
-    try
-    {
+    try {
       BankServer server = new BankServerImpl ();
-      Naming.rebind (" ATM ", server);
+      Naming.rebind("ATM", server);
     }
-    catch ( Exception e)
-    {
+    catch (Exception e) {
       System.err.println(e);
     }
-    System.out.println (" server ready ");
+    System.out.println("Server is ready ...");
   }
-  int currentBalance ;
-  public BankServerImpl () throws RemoteException
-  {
+
+  public BankServerImpl() throws RemoteException {
     currentBalance = 0;
   }
-  public int deposit (int inc) throws RemoteException
-  {
-    currentBalance = currentBalance +inc ;
-    return currentBalance ;
+
+  public int deposit(int inc) throws RemoteException {
+    currentBalance = currentBalance + inc;
+    return currentBalance;
   }
-  public int withdraw (int dec) throws RemoteException
-  {
-    currentBalance = currentBalance -dec ;
-    return currentBalance ;
+
+  public int withdraw(int dec) throws RemoteException {
+    currentBalance = currentBalance - dec;
+    return currentBalance;
   }
-  public int balance () throws RemoteException
-  {
-    return currentBalance ;
+
+  public int balance() throws RemoteException {
+    return currentBalance;
   }
 }

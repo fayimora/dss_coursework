@@ -12,8 +12,8 @@ public class Client
     try {
       BankServer server = (BankServer) Naming.lookup(URL);
       int bal = server.balance();
-      System.out.println (bal +" pounds in your account .");
-    } catch ( Exception e) {
+      System.out.println(bal + " pounds in your account.");
+    } catch (Exception e) {
       System.err.printf("Error has occured: %s\n", e.getMessage());
     }
   }
