@@ -12,7 +12,12 @@ public class Client
     try {
       BankServer server = (BankServer) Naming.lookup(URL);
       int bal = server.balance();
-      System.out.println(bal + " pounds in your account.");
+      System.out.printf("Your account balance is £%d\n", bal);
+      bal = server.deposit(200);
+      System.out.printf("Your account balance is £%d\n", bal);
+      bal = server.withdraw(123);
+      System.out.printf("Your account balance is £%d\n", bal);
+
     } catch (Exception e) {
       System.err.printf("Error has occured: %s\n", e.getMessage());
     }
