@@ -4,13 +4,17 @@ public class Client
 {
   public static void main(String[] args)
   {
-    try
-    {
-      BankServer server = (BankServer) Naming.lookup("// myMachine /ATM ");
+    String hostname = args[0];
+    String port = args[1];
+    String fullAddress = String.format("%s:%s", hostname, port);
+    String URL = String.format("//%s/ATM", fullAddress);
+
+    try {
+      BankServer server = (BankServer) Naming.lookup(URL);
       int bal = server.balance();
       System.out.println (bal +" pounds in your account .");
+    } catch ( Exception e) {
+      System.err.printf("Error has occured: %s\n", e.getMessage());
     }
-    catch ( Exception e)
-    {;}
   }
 }
