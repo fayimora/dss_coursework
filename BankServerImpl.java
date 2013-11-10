@@ -1,6 +1,7 @@
 import java.rmi.*;
 import java.rmi.server.*;
 
+@SuppressWarnings("serial")
 public class BankServerImpl extends UnicastRemoteObject implements BankServer
 {
   int currentBalance;
