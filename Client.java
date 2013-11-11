@@ -17,7 +17,6 @@ public class Client
       System.out.printf("Your account balance is £%d\n", bal);
       bal = server.withdraw(123);
       System.out.printf("Your account balance is £%d\n", bal);
-
     } catch (Exception e) {
       System.err.printf("Error has occured: %s\n", e.getMessage());
     }
