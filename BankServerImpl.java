@@ -13,6 +13,7 @@ public class BankServerImpl extends UnicastRemoteObject implements BankServer
       Naming.rebind("ATM", server);
     } catch (Exception e) {
       System.err.println(e);
+      System.exit(-1);
     }
 
     System.out.println("Server is ready ...");
