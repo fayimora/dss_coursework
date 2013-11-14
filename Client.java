@@ -17,7 +17,6 @@ public class Client
       client.doShenanigans();
     } catch (Exception e) {
       System.err.printf("Error has occured: %s\n", e);
-      System.out.println(e);
     }
   }
 
