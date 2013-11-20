@@ -13,10 +13,11 @@ class AccountFactory
     this.accountsTable.put(accountNumber, s);
     return s;
   }
-   public BankServer getAccount(int accountNumber) throws NoSuchAccountException {
-     if(this.accountsTable.keySet().contains(accountNumber))
-       return accountsTable.get(accountNumber);
-     else
-       throw new NoSuchAccountException(accountNumber);
-   }
+
+  public BankServer getAccount(int accountNumber) throws NoSuchAccountException {
+    if(this.accountsTable.keySet().contains(accountNumber))
+      return accountsTable.get(accountNumber);
+    else
+      throw new NoSuchAccountException(accountNumber);
+  }
 }
