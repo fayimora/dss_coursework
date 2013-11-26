@@ -28,26 +28,31 @@ public class Client
   }
 
   private void doShenanigans(Scanner in) throws RemoteException {
-    System.out.print("1. Use account.\n2. Create account\n3. Quit\n");
-    System.out.print("Please enter a command: ");
-    int command = in.nextInt();
+    int command = 0;
+    do {
+      System.out.print("1. Use account.\n2. Create account\n3. Quit\n");
+      System.out.print("Please enter a command: ");
+      command = in.nextInt();
 
-    if(command == 1){
-      System.out.print("Account number: ");
-      int accNum = in.nextInt();
-      accountOperations(accNum);
-    }
-    else if(command == 2)
-      createNewAccount();
-    else if(command == 3)
-      System.out.println("Thank you for using our Bank! See you soon.");
-    else
-      System.out.println("Invalid command! Shutting down...");
+      if(command == 1){
+        System.out.print("Account number: ");
+        int accNum = in.nextInt();
+        accountOperations(accNum);
+      }
+      else if(command == 2)
+        createNewAccount();
+      else if(command == 3)
+        System.out.println("Thank you for using our Bank! See you soon.");
+      else{
+        System.out.println("Invalid command! Shutting down...");
+        System.exit(-1);
+      }
+    }while(command != 3);
   }
 
   private void accountOperations(int accNum){
     try{
-      this.server = new AccountFactory().getAccount(accNum);
+      this.server = AccountFactory.getAccount(accNum);
       int bal = this.server.balance();
       System.out.printf("Your account balance is £%d\n", bal);
       bal = this.server.deposit(200);
@@ -55,17 +60,16 @@ public class Client
       bal = this.server.withdraw(123);
       System.out.printf("Your account balance is £%d\n", bal);
     } catch(Exception ex){
-      System.err.print("Exception Occured: " + ex);
+      System.err.println("Exception Occured: " + ex);
     }
   }
 
   private void createNewAccount(){
-    AccountFactory af = new AccountFactory();
     try{
-      this.server = af.newAccount();
+      this.server = AccountFactory.newAccount();
       System.out.printf("Welcome to your new account.\nYour account number is %d\n", this.server.getAccNo());
     } catch(Exception ex){
-      System.err.print("Exception Occured: " + ex);
+      System.err.println("Exception Occured: " + ex);
     }
   }
 }

@@ -5,17 +5,17 @@ import java.util.HashMap;
 
 class AccountFactory
 {
-  private HashMap<Integer, BankServer> accountsTable = new HashMap<Integer, BankServer>();
+  private static HashMap<Integer, BankServer> accountsTable = new HashMap<Integer, BankServer>();
 
-  public BankServer newAccount() throws RemoteException {
+  public static BankServer newAccount() throws RemoteException {
     int accountNumber = Math.abs(new Random().nextInt());
     BankServer s = new BankServerImpl(accountNumber);
-    this.accountsTable.put(accountNumber, s);
+    accountsTable.put(accountNumber, s);
     return s;
   }
 
-  public BankServer getAccount(int accountNumber) throws NoSuchAccountException {
-    if(this.accountsTable.containsKey(accountNumber))
+  public static BankServer getAccount(int accountNumber) throws NoSuchAccountException {
+    if(accountsTable.containsKey(accountNumber))
       return accountsTable.get(accountNumber);
     else
       throw new NoSuchAccountException(accountNumber);
