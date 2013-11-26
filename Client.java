@@ -32,22 +32,22 @@ public class Client
     System.out.print("Please enter a command: ");
     int command = in.nextInt();
 
-    switch(command){
-      case 1:
-        accountOperations(); break;
-      case 2:
-        createNewAccount(); break;
-      case 3:
-        System.out.println("Thank you for using our Bank! See you soon.");
-        System.exit(0); break;
-      default:
-        System.out.println("Invalid command! Shutting down...");
-        System.exit(1); break;
+    if(command == 1){
+      System.out.print("Account number: ");
+      int accNum = in.nextInt();
+      accountOperations(accNum);
     }
+    else if(command == 2)
+      createNewAccount();
+    else if(command == 3)
+      System.out.println("Thank you for using our Bank! See you soon.");
+    else
+      System.out.println("Invalid command! Shutting down...");
   }
 
-  private void accountOperations(){
+  private void accountOperations(int accNum){
     try{
+      this.server = new AccountFactory().getAccount(accNum);
       int bal = this.server.balance();
       System.out.printf("Your account balance is £%d\n", bal);
       bal = this.server.deposit(200);
@@ -63,6 +63,7 @@ public class Client
     AccountFactory af = new AccountFactory();
     try{
       this.server = af.newAccount();
+      System.out.printf("Welcome to your new account.\nYour account number is %d\n", this.server.getAccNo());
     } catch(Exception ex){
       System.err.print("Exception Occured: " + ex);
     }
