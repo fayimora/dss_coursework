@@ -58,6 +58,7 @@ public class Client
       System.err.print("Exception Occured: " + ex);
     }
   }
+
   private void createNewAccount(){
     AccountFactory af = new AccountFactory();
     try{
