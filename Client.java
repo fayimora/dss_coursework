@@ -1,7 +1,7 @@
 import java.rmi.*;
 import java.util.Scanner;
 
-public class Client
+public class Client implements TestRMIServer
 {
   private BankServer server;
 
@@ -73,5 +73,15 @@ public class Client
     } catch(Exception ex){
       System.err.println("Exception Occured: " + ex);
     }
+  }
+
+  public String sendString(int length){
+    String res = "";
+    for (int i=0; i<length; i++) res += "A";
+    return res;
+  }
+
+  public int lengthOfString(String s){
+    return s.length();
   }
 }

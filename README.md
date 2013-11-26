@@ -1,6 +1,6 @@
 ## Distributed Systems Coursework 1
 
-Nothing to see here, just a cursework for uni.
+Nothing to see here, just a coursework for uni.
 
 
 Distributed Systems Coursework 1
