@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{graphicx}
+\title{Brief Explanation of the Implementation and Tests for RMI Coursework}
+\author{Fayimora Femi-Balogun}
+\begin{document}
+
+\maketitle
+
+The first section of this document provides an explanation of the code, mainly what it does and how it does it. The second section describes findings from testing ltency and bandwidth between the client and server.
+
+\section{Implementation}
+The code comprises of 7 source files. The main source files include:
+
+\begin{enumerate}
+    \item \textbf{BankServerImpl:} This is the main server class that implements the given interface, \texttt{BankServer}. This class provides it's own main method from which it binds to a location for a client to connect to. It also exposes a few methods to the client for manipulating an account. They include \texttt{int deposit(int amount)}, \texttt{int withdraw(int amount)}, \texttt{int balance()} and \texttt{int getAccNo()}.
+
+    \item \textbf{AccountFactory:} This class provides two static methods. They include \texttt{BankServer newAccount()} which creates a new account for a client and \texttt{BankServer getAccount(int accountNumber)} which returns a setup for the client. The methods are static because we do not wan to have multiple instances. Every client should use the same factory. This class also keeps track of all open accounts while the server is running. If an account cannot be found, a unique \texttt{AccountNotFoundException} is thrown.
+    
+    \item \textbf{Client:} This class makes use of the classes above to run user operations and create/setup accounts, respectively. It also has a nice command line user interface. An example run of the client can be found in the submitted zip archive.
+
+\end{enumerate}
+
+\section{Testing the server}
+In order to test the time it takes the server to respond, I created a class called \texttt{TestRMI} which connects to the server and times a few operations. I made use of \texttt{System.nanoTime()} provided in the Java library to test the latency. I saved the time before and after the operation, then took the difference. The results were in nano seconds.
+
+I noticed that when  performing the same operation on the server, the time it takes does not really vary much. This was something I expected. However, when I increased the complexity of the computation as well as the size of the data being returned, my system froze. Initially, I thought this was due to the complexity of the function but running the function on it's own, that is, without returning the result to a client over a network, did not freeze the computer. This might be because I was not properly setup in someway or there was a problem while transmitting the very large result over the network. 
+\end{document}
