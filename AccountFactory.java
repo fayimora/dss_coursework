@@ -15,7 +15,7 @@ class AccountFactory
   }
 
   public BankServer getAccount(int accountNumber) throws NoSuchAccountException {
-    if(this.accountsTable.keySet().contains(accountNumber))
+    if(this.accountsTable.containsKey(accountNumber))
       return accountsTable.get(accountNumber);
     else
       throw new NoSuchAccountException(accountNumber);
