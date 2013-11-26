@@ -44,6 +44,6 @@ public class BankServerImpl extends UnicastRemoteObject implements BankServer
   }
 
   public int getAccNo() throws RemoteException{
-    return 123456789;
+    return this.accountNumber;
   }
 }
