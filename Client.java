@@ -28,11 +28,11 @@ public class Client
   }
 
   private void doShenanigans(Scanner in) throws RemoteException {
-    int command = 0;
+    boolean done = false;
     do {
       System.out.print("1. Use account.\n2. Create account\n3. Quit\n");
       System.out.print("Please enter a command: ");
-      command = in.nextInt();
+      int command = in.nextInt();
 
       if(command == 1){
         System.out.print("Account number: ");
@@ -41,13 +41,15 @@ public class Client
       }
       else if(command == 2)
         createNewAccount();
-      else if(command == 3)
+      else if(command == 3){
         System.out.println("Thank you for using our Bank! See you soon.");
+        done = true;
+      }
       else{
         System.out.println("Invalid command! Shutting down...");
         System.exit(-1);
       }
-    }while(command != 3);
+    }while(!done);
   }
 
   private void accountOperations(int accNum){
