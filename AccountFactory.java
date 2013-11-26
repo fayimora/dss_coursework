@@ -8,7 +8,7 @@ class AccountFactory
   private HashMap<Integer, BankServer> accountsTable = new HashMap<Integer, BankServer>();
 
   public BankServer newAccount() throws RemoteException {
-    int accountNumber = new Random(234).nextInt(999999999);
+    int accountNumber = new Random().nextInt();
     BankServer s = new BankServerImpl(accountNumber);
     this.accountsTable.put(accountNumber, s);
     return s;
