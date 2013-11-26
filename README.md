@@ -1,6 +1,16 @@
 ## Distributed Systems Coursework 1
 
-Nothing to see here, just a coursework for uni.
+### How to run
+
+To run the server, first run `rmiregistry` on a seperate terminal session. You can use `rmiregistry
+&` to run in the background. Keep a note of the PID s you can kill it later. To kill the process,
+run `kill -9 PID` in the terminal.
+
+Start the server on another terminal with `javac BankServerImpl.java && java BankServerImpl`
+Start the client with `javac Client.java && java Client IP_ADDRESS 1099`
+
+Enjoy!
+
 
 
 Distributed Systems Coursework 1
