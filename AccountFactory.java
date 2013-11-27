@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 class AccountFactory
 {
-  private static HashMap<Integer, BankServer> accountsTable = new HashMap<Integer, BankServer>();
+  public static HashMap<Integer, BankServer> accountsTable = new HashMap<Integer, BankServer>();
 
   public static BankServer newAccount() throws RemoteException {
     int accountNumber = Math.abs(new Random().nextInt());
@@ -20,4 +20,8 @@ class AccountFactory
     else
       throw new NoSuchAccountException(accountNumber);
   }
+
+  /* private static HashMap<Integer, BankServer> getAccounts(){ */
+  /*   return accountsTable; */
+  /* } */
 }
