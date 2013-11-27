@@ -1,14 +1,11 @@
 import java.rmi.*;
 import java.rmi.server.*;
-import java.util.HashMap;
 
 @SuppressWarnings("serial")
 public class BankServerImpl extends UnicastRemoteObject implements BankServer
 {
   private int currentBalance;
   private int accountNumber;
-  private static BankServer oldServer;
-  public static HashMap<Integer, BankServer> accountsTable = new HashMap<Integer, BankServer>();
 
   public static void main(String[] args)
   {
@@ -48,14 +45,5 @@ public class BankServerImpl extends UnicastRemoteObject implements BankServer
 
   public int getAccNo() throws RemoteException{
     return this.accountNumber;
-  }
-
-  public static BankServer oldServer(){
-    return oldServer;
-  }
-
-  public static void saveServer(BankServer server){
-    oldServer = server;
-    BankServerImpl.accountsTable = AccountFactory.accountsTable;
   }
 }

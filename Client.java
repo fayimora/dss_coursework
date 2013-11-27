@@ -24,8 +24,7 @@ public class Client implements TestRMIServer
   }
 
   public Client(BankServer server){
-    /* this.server = server; */
-    this.server = BankServerImpl.oldServer();
+    this.server = server;
   }
 
   private void doShenanigans(Scanner in) throws RemoteException {
@@ -45,18 +44,12 @@ public class Client implements TestRMIServer
       else if(command == 3){
         System.out.println("Thank you for using our Bank! See you soon.");
         done = true;
-        saveServer();
       }
       else{
         System.out.println("Invalid command! Shutting down...");
         System.exit(-1);
-        saveServer();
       }
     }while(!done);
-  }
-
-  public void saveServer(){
-    BankServerImpl.saveServer(this.server);
   }
 
   private void accountOperations(int accNum){
