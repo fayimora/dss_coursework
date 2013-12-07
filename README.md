@@ -1,4 +1,4 @@
-## Distributed Systems Coursework 1
+## Distributed Systems Courseworks
 
 ### How to run
 
@@ -13,7 +13,7 @@ Enjoy!
 
 
 
-Distributed Systems Coursework 1
+Distributed Systems Coursework
 Copyright (C) 2013 Fayimora Femi-Balogun
 
 Permission is hereby granted, free of charge, to any person obtaining
